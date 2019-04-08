@@ -1,15 +1,51 @@
 package com.example.kaka.myweather.bean;
 
-public class CityBean {
-    private int id;
-    private String name;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
-    public CityBean() {
+import java.io.Serializable;
+
+@DatabaseTable(tableName = "District")
+public class DistrictBean implements Serializable {
+    @DatabaseField(id = true)
+    private String mainId;
+    @DatabaseField(canBeNull = false)
+    private int _id;
+    @DatabaseField(canBeNull = false)
+    private int id;
+    @DatabaseField(canBeNull = false)
+    private String name;
+    @DatabaseField(canBeNull = false)
+    private String weather_id;
+
+    public DistrictBean() {
     }
 
-    public CityBean(int id, String name) {
+    public DistrictBean(String name, String weather_id) {
+        this.name = name;
+        this.weather_id = weather_id;
+    }
+
+    public DistrictBean(int id, String name, String weather_id) {
         this.id = id;
         this.name = name;
+        this.weather_id = weather_id;
+    }
+
+    public String getMainId() {
+        return mainId;
+    }
+
+    public void setMainId(String mainId) {
+        this.mainId = mainId;
+    }
+
+    public int get_id() {
+        return _id;
+    }
+
+    public void set_id(int _id) {
+        this._id = _id;
     }
 
     public int getId() {
@@ -26,5 +62,13 @@ public class CityBean {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getWeather_id() {
+        return weather_id;
+    }
+
+    public void setWeather_id(String weather_id) {
+        this.weather_id = weather_id;
     }
 }
